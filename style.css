@@ -1,0 +1,185 @@
+/* ========== ОСНОВНЫЕ СТИЛИ ========== */
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f0c0c;
+  color: #eee;
+  overflow: hidden;
+}
+
+/* Фон игрового бара */
+#barBackground {
+  position: fixed;
+  inset: 0;
+  background: url("images/bar_bg.jpg") center/cover no-repeat;
+  filter: brightness(0.25);
+  z-index: 0;
+}
+
+/* Главное меню */
+#mainMenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(24,24,24,0.9);
+  padding: 20px 28px;
+  border-radius: 12px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+.title { 
+  margin: 0 0 10px 0; 
+  font-size: 22px; 
+  letter-spacing: 1px; 
+}
+
+.records { 
+  text-align: left; 
+  margin-top: 8px; 
+  max-height: 160px; 
+  overflow: auto; 
+  font-size: 14px; 
+  color: #ddd; 
+}
+
+/* Кнопки */
+.btn, .small-btn {
+  background: linear-gradient(#3a3a3a,#272727);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 4px;
+}
+.btn { padding: 10px 16px; font-size: 15px; }
+.small-btn { padding: 6px 10px; font-size: 13px; }
+
+/* Контейнер игры */
+.game-container { 
+  position: fixed; 
+  left:50%; top:50%; 
+  transform:translate(-50%,-50%);
+  z-index:5; 
+  width:680px; 
+  max-width:calc(100vw-40px);
+  background: rgba(10,10,10,0.45); 
+  padding:16px; 
+  border-radius:12px; 
+  box-shadow:0 16px 40px rgba(0,0,0,0.7); 
+}
+/* HUD и очки */
+#hud {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index:12;
+  width:96%;
+  max-width:920px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events:none;
+}
+.score { font-size:18px; margin-left:16px; pointer-events:auto; }
+#controls { pointer-events:auto; margin-right:16px; }
+/* Полоса трезвости */
+#sobrietyContainer {
+  position: fixed;
+  top:8px; left:50%;
+  transform:translateX(-50%);
+  width:360px; max-width:86%;
+  height:18px;
+  background:#333;
+  border-radius:12px;
+  overflow:hidden;
+  z-index:12;
+  box-shadow:0 4px 10px rgba(0,0,0,0.6);
+}
+#sobrietyBarInner {
+  width:100%; height:100%;
+  background: linear-gradient(90deg,#4caf50,#ffcc00,#f44336);
+  transition: width 0.2s linear, background 0.2s linear;
+}
+#sobrietyLabel {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  font-size:13px;
+  font-weight:bold;
+  color:#fff;
+  text-shadow:0 0 4px rgba(0,0,0,0.8);
+  pointer-events:none;
+  z-index:13;
+}
+/* Игровое поле */
+#gameArea { 
+  margin:12px auto 0; 
+  width:40px; height:480px; 
+  background: radial-gradient(circle at 10% 10%, #222 0%, #000 60%);
+  position:relative; 
+  overflow:visible; 
+  border-radius:8px; 
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.8); 
+}
+/* Кнопка музыки */
+#musicBtn {
+  position:fixed; top:15px; right:15px;
+  background: rgba(20,20,20,0.8); border:2px solid #555; border-radius:8px;
+  padding:10px 20px;
+  color:#fff; font-family:'Courier New', monospace; font-size:16px;
+  cursor:pointer; z-index:999; transition: background 0.2s;
+}
+/* Описание игры / инфо */
+.about {
+  position: fixed; bottom:20px; left:50%; transform:translateX(-50%);
+  max-width:90%;
+  background: rgba(40,40,40,0.95);
+  color:#fff; padding:16px;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+  z-index:999;
+}
+/* Диалоговое окно */
+#dialogueBox {
+  position: fixed;
+  bottom:20px;
+  left:50%;
+  transform: translateX(-50%) translateY(30px);
+  width:92%; max-width:760px;
+  background: rgba(12,12,12,0.92);
+  border-radius:10px; padding:12px 14px;
+  display:flex; gap:12px; align-items:center;
+  z-index:9999;
+  opacity:0; transition:opacity 360ms ease, transform 360ms ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+#dialogueBox.visible { opacity:1; transform: translateX(-50%) translateY(0); }
+#dialoguePortrait { width:88px; height:88px; border-radius:8px; object-fit:cover; border:2px solid rgba(255,255,255,0.06); }
+#dialogueContent { flex:1; color:#06ff23; }
+#dialogueName { font-weight:700; color:#ffd54f; margin-bottom:6px; }
+#dialogueText { font-size:15px; line-height:1.4; }
+/* Эффект победы */
+.victory-glow {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: radial-gradient(circle, rgba(255,223,0,0.4) 0%, rgba(255,223,0,0) 70%);
+  z-index:998; pointer-events:none;
+  animation: glowPulse 1.2s ease-in-out infinite;
+}
+@keyframes glowPulse { 0%,100% {opacity:0.3;} 50%{opacity:0.6;} }
+/* Конфетти */
+.confetti {
+  position: fixed; width:10px; height:10px;
+  background-color: #ff0; border-radius:3px;
+  z-index:999; pointer-events:none; opacity:0.9;
+  animation: fall 2s linear forwards;
+}
+@keyframes fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+}

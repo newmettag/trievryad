@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ПЬЯНИЦА — три в ряд</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div id="barBackground"></div>
+  <div id="mainMenu" class="menu">
+    <h1 class="title">ПЬЯНИЦА — три в ряд</h1>
+    <div id="recordsList" class="records"></div>
+    <div style="margin-top:12px;">
+      <button id="startBtn" class="btn">Играть</button>
+      <button id="exitBtn" class="btn">Выход</button>
+      <button id="aboutBtn" class="btn small-btn">О игре</button>
+    </div>
+  </div>
+  <div class="about" id="aboutInfo" style="display:none;">
+    <h3>О игре</h3>
+    <p>
+      В игре "Пьяница" собирай одинаковые "алкогольные" камни по три и более, 
+      набирай очки и следи за трезвостью. 
+      Чем больше совпадений, тем выше очки и трезвость!
+    </p>
+  </div>
+  <div id="gameContainer" class="game-container" style="display:none;">
+    <div id="hud">
+      <div id="score" class="score">Очки: 0</div>
+      <div id="controls"></div>
+    </div>
+    <div id="sobrietyContainer">
+      <div id="sobrietyBarInner"></div>
+      <div id="sobrietyLabel">Трезвость</div>
+    </div>
+    <div id="gameArea"></div>
+    <div style="text-align:center; margin-top:12px;">
+      <button id="backBtn" class="btn">В главное меню</button>
+    </div>
+  </div>
+  <button id="musicBtn">🎵 Музыка: Вкл</button>
+  <div id="dialogueBox" aria-live="polite">
+    <img id="dialoguePortrait" src="" alt="портрет" />
+    <div id="dialogueContent">
+      <div id="dialogueName"></div>
+      <div id="dialogueText"></div>
+    </div>
+  </div>
+</body>
+</html>
